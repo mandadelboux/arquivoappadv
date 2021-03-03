@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista de Tarefas</ion-title>
+    <ion-buttons slot="primary" (click)="addTarefas()">
+      <ion-button >Novo
+        <ion-icon slot="end" name="add"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-toolbar color="dark">
+  <!-- <ion-searchbar [(ngModel)]="searchKey" placeholder="Buscar"></ion-searchbar> -->
+  <ion-buttons slot="start">
+    <ion-icon name="calendar"></ion-icon>Data:
+</ion-buttons>
+  <ion-input type="date" [(ngModel)]="nome" (ionChange)="carregar()"></ion-input>
+
+  <ion-buttons slot="end">
+    <ion-button size="small" shape="round" color="medium" (click)="carregar()">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+
+<ion-content class="cinza-claro" class="ion-padding">
+<ion-list>
+  <ion-item-sliding *ngFor="let item of lista">
+    <ion-item-options side="start">
+      <ion-item-option (click)="editar(item.id, item.nome, item.descricao, item.data, item.hora, item.advogado, item.status)">
+        Editar
+      </ion-item-option>
+      <ion-item-option (click)="concluir(item.id)" color="success" *ngIf="item.status === 'Agendada'">
+        Concluir
+      </ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+     
+      <ion-label>
+        <ion-icon name="square" color="primary" *ngIf="item.status === 'Agendada'"></ion-icon>
+        <ion-icon name="square" color="success" *ngIf="item.status === 'Concluida'"></ion-icon>
+        {{item.nome}}
+      <h6><small> <span>Data: {{item.data}}</span>  - Hora:{{item.hora}}</small></h6>
+    </ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option (click)="mostrar(item.id, item.nome, item.descricao, item.data, item.hora, item.advogado, item.status)" color="secondary">
+        Mostrar
+      </ion-item-option>
+      <ion-item-option (click)="excluir(item.id)" color="danger">
+        Excluir
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
+
+
+<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    
+    refreshingSpinner="circles"
+    refreshingText="Carregando...">
+  </ion-refresher-content>
+</ion-refresher>
+
+
+
+
+
+
+<ion-infinite-scroll  (ionInfinite)="loadData($event)">
+<ion-infinite-scroll-content
+  loadingSpinner="bubbles"
+  loadingText="Carregando mais dados">
+</ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="Processos()">
+      <ion-button>
+        <ion-icon  name="arrow-back"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Inserir Movimentação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">
+      Titulo
+    </ion-label>
+    <ion-input [(ngModel)]="titulo">
+
+    </ion-input>
+  </ion-item>
+
+ 
+
+
+  <ion-item>
+    <ion-label position="floating">
+      Observações
+    </ion-label>
+    <ion-textarea [(ngModel)]="obs">
+
+    </ion-textarea>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="floating">
+      Data
+    </ion-label>
+
+    <ion-input type="date" [(ngModel)]="data"></ion-input>
+    
+  </ion-item>
+  
+
+  <ion-button *ngIf="!id" color="success" expand="block" (click)="cadastrar()">
+    Salvar
+  </ion-button>
+
+  <ion-button *ngIf="id" color="primary" expand="block" (click)="editar()">
+    Editar
+  </ion-button>
+
+ 
+
+</ion-content>

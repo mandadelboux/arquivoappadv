@@ -1,0 +1,31 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="Movimentacoes()">
+      <ion-button>
+        <ion-icon  name="arrow-back"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Dados da Movimentação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card class="cinza-claro">
+  <ion-card-header>
+    
+    <ion-card-title>
+          {{titulo}}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <b>Data: {{data}}</b> <br>
+    Processo: {{processo}}  <br>
+   
+
+    <br>
+    <b>Observações</b><br>
+    {{obs}} <br>
+    
+  </ion-card-content>
+</ion-card>
+</ion-content>

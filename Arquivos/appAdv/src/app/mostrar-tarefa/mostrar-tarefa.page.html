@@ -1,0 +1,33 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" (click)="Tarefas()">
+      <ion-button>
+        <ion-icon  name="arrow-back"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Dados da Tarefa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card class="cinza-claro">
+  <ion-card-header>
+    
+    <ion-card-title>
+      <ion-icon name="square" color="primary" *ngIf="status === 'Agendada'"></ion-icon>
+        <ion-icon name="square" color="success" *ngIf="status === 'Concluida'"></ion-icon>
+          {{nome}}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    
+    Data: {{data}} - Hora: {{hora}} <br>
+   
+
+    <br>
+    <b>Descrição:</b><br>
+    {{descricao}} <br>
+    
+  </ion-card-content>
+</ion-card>
+</ion-content>
